@@ -1,73 +1,112 @@
-# Welcome to your Ashish's Portfolio project
+# 🌐 theashishbisht.github.io
 
-## Project info
+Welcome to my personal developer portfolio — a fully responsive and blazing-fast website built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. This project showcases my skills, projects, and background in a sleek, modern layout.
 
-**URL**: https://lovable.dev/projects/6e86f0ec-7db0-4111-84e6-13ef9977e3a3
+---
 
-## How can I edit this code?
+## 🚀 Tech Stack
 
-There are several ways of editing your application.
+- ⚡ **Vite** – Lightning-fast development and build tool
+- ⚛️ **React** – Component-based UI library
+- 🟦 **TypeScript** – Typed superset of JavaScript
+- 🎨 **Tailwind CSS** – Utility-first CSS framework
+- 💎 **shadcn/ui** – Accessible UI components
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6e86f0ec-7db0-4111-84e6-13ef9977e3a3) and start prompting.
+## 📁 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+├── public/ # Static assets
+├── src/ # Source code
+│ ├── components/ # Reusable components
+│ ├── pages/ # Page components
+│ └── index.tsx # App entry point
+├── index.html # Main HTML file
+├── vite.config.ts # Vite configuration
+├── tailwind.config.ts # Tailwind customization
+└── tsconfig.json # TypeScript configuration
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📸 Preview
 
-Follow these steps:
+Check out the live version of the portfolio:  
+👉 [https://theashishbisht.github.io](https://theashishbisht.github.io)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🛠️ Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+To run the project locally:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Clone the repository
+git clone https://github.com/theashishbisht/theashishbisht.github.io
+cd theashishbisht.github.io
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+# Build for production
+npm run build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+# 📦 Deployment
+This project is deployed on GitHub Pages using the output from vite build located in the dist/ directory.
 
-**Use GitHub Codespaces**
+To deploy manually:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+npm run build
+cd dist
+git init
+git add .
+git commit -m "Deploy portfolio"
+git push -f origin gh-pages
 
-## What technologies are used for this project?
+Then, configure GitHub Pages to serve from the gh-pages branch.
 
-This project is built with:
+🙋‍♂️ About Me
+Hi! I'm Ashish Bisht — a passionate developer focused on modern web technologies, cloud infrastructure, and scalable frontend architectures. This portfolio is a reflection of my work and personal branding.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+📬 Connect with me on LinkedIn
+📫 Email: theashishbisht@gmail.com
 
-## How can I deploy this project?
+📄 License
+This project is open-source and available under the MIT License.
 
-Simply open [Lovable](https://lovable.dev/projects/6e86f0ec-7db0-4111-84e6-13ef9977e3a3) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+Feel free to customize this further to match your personal branding or add more sections like testimonials, blog links, or project showcases. Let me know if you'd like assistance with any of these additions!
+::contentReference[oaicite:0]{index=0}
+ 
 
-Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
