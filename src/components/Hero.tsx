@@ -20,7 +20,6 @@ const Hero = () => {
   }, []);
 
   // ... rest of your component
-};
 
   return (
     <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
@@ -137,5 +136,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;
