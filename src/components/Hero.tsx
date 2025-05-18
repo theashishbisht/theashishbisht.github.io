@@ -36,9 +36,9 @@ const Hero = () => {
               <div className="w-full h-full rounded-full bg-background/80 dark:bg-gray-800/80 backdrop-blur-sm flex flex-col items-center justify-center">
                 <Eye className="h-5 w-5 text-brand-blue dark:text-brand-blue/90" />
                 <span className="text-xs font-medium mt-1 text-brand-darkblue dark:text-white">1.2k views</span>
-              </div>
-            </div>
-        {/* Decorative dots like the profile image */}
+                  </div>
+         
+            {/* Decorative dots like the profile image */}
             <span className="absolute w-2 h-2 bg-brand-blue rounded-full -top-0.5 left-1/2 transform -translate-x-1/2"></span>
             <span className="absolute w-2 h-2 bg-brand-orange rounded-full -bottom-0.5 left-1/2 transform -translate-x-1/2"></span>
           </div>
