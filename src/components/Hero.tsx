@@ -2,9 +2,26 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Database, Cloud, Code, Server } from 'lucide-react';
+import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  const [pageViews, setPageViews] = useState(1);
+  
+  // Simulate page view counter increase
+  useEffect(() => {
+    // Start with a random base count between 500-1500
+    const baseCount = Math.floor(Math.random() * 1000) + 500;
+    setPageViews(baseCount);
+    
+    // Optional: Increase counter periodically to simulate live views
+    const interval = setInterval(() => {
+      setPageViews(prev => prev + 1);
+    }, 30000); // Increase by 1 every 30 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
       <div className="container px-4 md:px-6">
@@ -35,7 +52,35 @@ const Hero = () => {
                 <a href="#contact">Contact Me</a>
               </Button>
             </div>
+            
+            {/* Page Views Badge - Rectangular Design */}
+            <div className="relative mt-6 animate-fade-in w-full max-w-[300px]">
+              {/* Container with gradient border */}
+              <div className="rounded-xl p-0.5 bg-gradient-to-r from-brand-blue via-brand-orange to-brand-blue shadow-lg">
+                {/* Inner translucent container */}
+                <div className="rounded-xl bg-background/80 dark:bg-background/40 backdrop-blur-md p-3 flex items-center justify-between">
+                  {/* Left side with icon */}
+                  <div className="flex items-center">
+                    <div className="bg-gradient-to-br from-brand-blue to-brand-orange p-1.5 rounded-lg shadow-inner">
+                      <Binoculars className="h-5 w-5 text-white animate-pulse" />
+                    </div>
+                  </div>
+                  
+                  {/* Right side with counter */}
+                  <div className="flex items-center">
+                    <div className="text-right">
+                      <div className="font-semibold text-brand-blue dark:text-white">{pageViews.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">visitors exploring</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 rounded-xl bg-brand-blue/15 dark:bg-brand-orange/15 blur-md -z-10"></div>
+              </div>
+            </div>
           </div>
+          
           <div className="md:w-1/2 flex justify-center md:justify-end animate-fade-in">
             <div className="relative">
               {/* Decorative background elements */}
