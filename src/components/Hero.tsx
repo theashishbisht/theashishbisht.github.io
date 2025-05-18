@@ -6,20 +6,21 @@ import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
-  const [pageViews, setPageViews] = useState(1);
-  
-  // Simulate page view counter increase
+  const [pageViews, setPageViews] = useState(0);
+
   useEffect(() => {
-  const counterKey = "theashishbisht.github.io/views";
+    fetch('https://api.countapi.xyz/hit/theashishbisht.github.io/visits')
+      .then((res) => res.json())
+      .then((data) => {
+        setPageViews(data.value);
+      })
+      .catch((err) => {
+        console.error('Error fetching page views:', err);
+      });
+  }, []);
 
-  fetch(`https://api.countapi.xyz/hit/${counterKey}`)
-    .then(res => res.json())
-    .then(data => {
-      setPageViews(data.value);
-    })
-    .catch(err => console.error("View counter error:", err));
-}, []);
-
+  // ... rest of your component
+};
 
   return (
     <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
