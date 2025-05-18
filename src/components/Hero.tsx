@@ -10,17 +10,16 @@ const Hero = () => {
   
   // Simulate page view counter increase
   useEffect(() => {
-    // Start with a random base count between 500-1500
-    const baseCount = Math.floor(Math.random() * 1000) + 500;
-    setPageViews(baseCount);
-    
-    // Optional: Increase counter periodically to simulate live views
-    const interval = setInterval(() => {
-      setPageViews(prev => prev + 1);
-    }, 30000); // Increase by 1 every 30 seconds
-    
-    return () => clearInterval(interval);
-  }, []);
+  const counterKey = "theashishbisht.github.io/views";
+
+  fetch(`https://api.countapi.xyz/hit/${counterKey}`)
+    .then(res => res.json())
+    .then(data => {
+      setPageViews(data.value);
+    })
+    .catch(err => console.error("View counter error:", err));
+}, []);
+
 
   return (
     <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
