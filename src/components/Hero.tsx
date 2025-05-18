@@ -2,11 +2,26 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Database, Cloud, Code, Server } from 'lucide-react';
-import { ArrowDown, Database, Cloud, Code, Server, Eye } from 'lucide-react';
-
+import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+  const [pageViews, setPageViews] = useState(1);
+  
+  // Simulate page view counter increase
+  useEffect(() => {
+    // Start with a random base count between 500-1500
+    const baseCount = Math.floor(Math.random() * 1000) + 500;
+    setPageViews(baseCount);
+    
+    // Optional: Increase counter periodically to simulate live views
+    const interval = setInterval(() => {
+      setPageViews(prev => prev + 1);
+    }, 30000); // Increase by 1 every 30 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
       <div className="container px-4 md:px-6">
@@ -28,22 +43,6 @@ const Hero = () => {
                 className="bg-brand-blue hover:bg-brand-darkblue text-white font-medium px-6 transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 <a href="#portfolio">View My Work</a>
-        <div className="flex justify-center mt-6">
-          <div className="relative">  
-            {/* Outer ring with gradient similar to profile picture */}
-            <div className="w-20 h-20 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-orange shadow-md flex items-center justify-center">
-              {/* Translucent inner bubble */}
-              <div className="w-full h-full rounded-full bg-background/80 dark:bg-gray-800/80 backdrop-blur-sm flex flex-col items-center justify-center">
-                <Eye className="h-5 w-5 text-brand-blue dark:text-brand-blue/90" />
-                <span className="text-xs font-medium mt-1 text-brand-darkblue dark:text-white">1.2k views</span>
-                  </div>
-         
-            {/* Decorative dots like the profile image */}
-            <span className="absolute w-2 h-2 bg-brand-blue rounded-full -top-0.5 left-1/2 transform -translate-x-1/2"></span>
-            <span className="absolute w-2 h-2 bg-brand-orange rounded-full -bottom-0.5 left-1/2 transform -translate-x-1/2"></span>
-          </div>
-        </div>
-
               </Button>
               <Button 
                 asChild
@@ -53,7 +52,35 @@ const Hero = () => {
                 <a href="#contact">Contact Me</a>
               </Button>
             </div>
+            
+            {/* Page Views Badge - Rectangular Design */}
+            <div className="relative mt-6 animate-fade-in w-full max-w-[300px]">
+              {/* Container with gradient border */}
+              <div className="rounded-xl p-0.5 bg-gradient-to-r from-brand-blue via-brand-orange to-brand-blue shadow-lg">
+                {/* Inner translucent container */}
+                <div className="rounded-xl bg-background/80 dark:bg-background/40 backdrop-blur-md p-3 flex items-center justify-between">
+                  {/* Left side with icon */}
+                  <div className="flex items-center">
+                    <div className="bg-gradient-to-br from-brand-blue to-brand-orange p-1.5 rounded-lg shadow-inner">
+                      <Binoculars className="h-5 w-5 text-white animate-pulse" />
+                    </div>
+                  </div>
+                  
+                  {/* Right side with counter */}
+                  <div className="flex items-center">
+                    <div className="text-right">
+                      <div className="font-semibold text-brand-blue dark:text-white">{pageViews.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">visitors exploring</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 rounded-xl bg-brand-blue/15 dark:bg-brand-orange/15 blur-md -z-10"></div>
+              </div>
+            </div>
           </div>
+          
           <div className="md:w-1/2 flex justify-center md:justify-end animate-fade-in">
             <div className="relative">
               {/* Decorative background elements */}
@@ -90,7 +117,7 @@ const Hero = () => {
                 <Server className="h-4 w-4 text-brand-orange" />
                 <span className="text-brand-orange dark:text-white">Data Engineering</span>
               </div>
-              <div className="absolute top-1/2 -left-12 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md text-sm font-bold border border-brand-lightblue/50 flex items-center gap-2 dark:border-brand-blue/30">
+              <div className="absolute top-1/3 -left-20 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md text-sm font-bold border border-brand-lightblue/50 flex items-center gap-2 dark:border-brand-blue/30">
                 <Code className="h-4 w-4 text-brand-darkblue dark:text-brand-blue" />
                 <span className="text-brand-darkblue dark:text-white">&lt;Coding&gt;</span>
               </div>
