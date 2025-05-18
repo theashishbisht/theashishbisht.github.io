@@ -15,7 +15,7 @@ Welcome to my personal developer portfolio — a fully responsive and blazing-fa
 ---
 
 ## 📁 Project Structure
-
+.
 ├── public/ # Static assets
 ├── src/ # Source code
 │ ├── components/ # Reusable components
