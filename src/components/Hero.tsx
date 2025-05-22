@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
@@ -6,16 +5,32 @@ import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
-  const [pageViews, setPageViews] = useState(0);
+  const [pageViews, setPageViews] = useState<number>(0);
 
   useEffect(() => {
-    fetch('https://api.countapi.xyz/hit/theashishbisht.github.io/visits')
+    // Using the more reliable GoatCounter analytics API
+    fetch('https://api.goatcounter.com/counter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        path: window.location.pathname,
+        title: document.title,
+        referrer: document.referrer,
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
-        setPageViews(data.value);
+        // Get the total count from the response
+        setPageViews(data.count || 0);
       })
       .catch((err) => {
-        console.error('Error fetching page views:', err);
+        console.error('Error tracking page view:', err);
+        // Fallback to a local storage based counter if API fails
+        const localViews = parseInt(localStorage.getItem('pageViews') || '0');
+        localStorage.setItem('pageViews', (localViews + 1).toString());
+        setPageViews(localViews + 1);
       });
   }, []);
 
