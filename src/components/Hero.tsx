@@ -3,35 +3,38 @@ import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, increment, set, get } from 'firebase/database';
 
 const Hero = () => {
   const [pageViews, setPageViews] = useState<number>(0);
 
   useEffect(() => {
-    // Using the more reliable GoatCounter analytics API
-    fetch('https://api.goatcounter.com/counter', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        path: window.location.pathname,
-        title: document.title,
-        referrer: document.referrer,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Get the total count from the response
-        setPageViews(data.count || 0);
-      })
-      .catch((err) => {
-        console.error('Error tracking page view:', err);
-        // Fallback to a local storage based counter if API fails
-        const localViews = parseInt(localStorage.getItem('pageViews') || '0');
-        localStorage.setItem('pageViews', (localViews + 1).toString());
-        setPageViews(localViews + 1);
-      });
+    // Your Firebase config (you'll need to sign up for Firebase and get these credentials)
+    const firebaseConfig = {
+      // Add your Firebase config here
+      apiKey: "YOUR_API_KEY",
+      authDomain: "your-app.firebaseapp.com",
+      databaseURL: "https://your-app.firebaseio.com",
+      projectId: "your-project-id",
+      storageBucket: "your-app.appspot.com",
+      messagingSenderId: "your-messaging-sender-id",
+      appId: "your-app-id"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const viewsRef = ref(db, 'pageViews');
+
+    // Increment the counter
+    get(viewsRef).then((snapshot) => {
+      const currentViews = snapshot.val() || 0;
+      set(viewsRef, increment(1));
+      setPageViews(currentViews + 1);
+    }).catch((error) => {
+      console.error('Error fetching page views:', error);
+    });
   }, []);
 
   // ... rest of your component
