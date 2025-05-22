@@ -2,49 +2,91 @@ import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Database, Cloud, Code, Server, Binoculars } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, increment, set, get } from 'firebase/database';
+import Image from 'next/image';
+
+// Add proper TypeScript interface
+interface HeroProps {}
+
+// Move these outside component to prevent recreating on each render
+const skillBadges = [
+  { icon: Database, text: 'Big Data', color: 'brand-blue' },
+  { icon: Server, text: 'Data Engineering', color: 'brand-orange' },
+  { icon: Code, text: '<Coding>', color: 'brand-darkblue' }
+];
+
+// Move these to a separate config file
+const CONFIG = {
+  API_ENDPOINT: 'https://api.countapi.xyz/hit/theashishbisht.github.io/visits',
+  PROFILE_IMAGE_URL: 'https://i.postimg.cc/CKMtPmQK/DP.jpg',
+  NAVIGATION: {
+    PORTFOLIO: '#portfolio',
+    CONTACT: '#contact',
+    ABOUT: '#about'
+  }
+};
+
+// Add structured data for better SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ashish Bisht",
+  "jobTitle": "Senior Data Analyst",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Numerator"
+  }
+};
 
 const Hero = () => {
   const [pageViews, setPageViews] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Your Firebase config (you'll need to sign up for Firebase and get these credentials)
-    const firebaseConfig = {
-      // Add your Firebase config here
-      apiKey: "YOUR_API_KEY",
-      authDomain: "your-app.firebaseapp.com",
-      databaseURL: "https://your-app.firebaseio.com",
-      projectId: "your-project-id",
-      storageBucket: "your-app.appspot.com",
-      messagingSenderId: "your-messaging-sender-id",
-      appId: "your-app-id"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const viewsRef = ref(db, 'pageViews');
-
-    // Increment the counter
-    get(viewsRef).then((snapshot) => {
-      const currentViews = snapshot.val() || 0;
-      set(viewsRef, increment(1));
-      setPageViews(currentViews + 1);
-    }).catch((error) => {
-      console.error('Error fetching page views:', error);
-    });
+    setIsLoading(true);
+    fetch(CONFIG.API_ENDPOINT)
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+      })
+      .then((data) => {
+        setPageViews(data.value);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching page views:', err);
+        setError('Failed to load visitor count');
+        setIsLoading(false);
+      });
   }, []);
+
+  // Add loading and error states to the view counter
+  const renderViewCounter = () => {
+    if (error) return <div className="text-red-500 text-sm">{error}</div>;
+    if (isLoading) return <div className="animate-pulse">Loading...</div>;
+    return (
+      <div className="font-semibold text-brand-blue dark:text-white">
+        {pageViews.toLocaleString()}
+      </div>
+    );
+  };
 
   // ... rest of your component
 
   return (
-    <section id="home" className="pt-20 pb-16 md:pt-28 md:pb-24">
+    <section 
+      id="home" 
+      className="pt-20 pb-16 md:pt-28 md:pb-24"
+      role="banner"
+      aria-labelledby="hero-title"
+    >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           <div className="flex flex-col space-y-4 md:w-1/2 animate-fade-in">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">
+            <h1 id="hero-title" className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tighter">
               Hello, I'm <span className="gradient-text">Ashish Bisht</span>
             </h1>
             <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground">
@@ -86,7 +128,7 @@ const Hero = () => {
                   {/* Right side with counter */}
                   <div className="flex items-center">
                     <div className="text-right">
-                      <div className="font-semibold text-brand-blue dark:text-white">{pageViews.toLocaleString()}</div>
+                      {renderViewCounter()}
                       <div className="text-xs text-muted-foreground">visitors exploring</div>
                     </div>
                   </div>
@@ -107,15 +149,15 @@ const Hero = () => {
               {/* Profile image container with gradient border */}
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-orange shadow-xl relative">
                 {/* Inner white or dark-mode-adjusted container */}
-                <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-                  <Avatar className="w-full h-full">
-                    <AvatarImage 
-                      src="https://i.postimg.cc/CKMtPmQK/DP.jpg" 
-                      alt="Ashish Bisht"
-                      className="object-cover"
-                    />
-                    <AvatarFallback className="text-6xl font-bold gradient-text">AB</AvatarFallback>
-                  </Avatar>
+                <div className="w-full h-full rounded-full bg-background overflow-hidden">
+                  <Image 
+                    src={CONFIG.PROFILE_IMAGE_URL}
+                    alt="Ashish Bisht - Senior Data Analyst"
+                    width={320}
+                    height={320}
+                    className="object-cover"
+                    priority
+                  />
                 </div>
                 
                 {/* Decorative dots around the circle */}
