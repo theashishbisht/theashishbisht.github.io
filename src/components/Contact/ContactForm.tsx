@@ -20,13 +20,6 @@ export const ContactForm = () => {
     message: ''
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -79,7 +72,7 @@ export const ContactForm = () => {
           id="name"
           name="name"
           value={formData.name}
-          onChange={handleChange}
+          onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
           placeholder="John Doe"
           required
           aria-required="true"
@@ -95,7 +88,7 @@ export const ContactForm = () => {
           name="email"
           type="email"
           value={formData.email}
-          onChange={handleChange}
+          onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
           placeholder="john@example.com"
           required
           aria-required="true"
@@ -110,7 +103,7 @@ export const ContactForm = () => {
           id="message"
           name="message"
           value={formData.message}
-          onChange={handleChange}
+          onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
           placeholder="Your message here..."
           rows={5}
           required
