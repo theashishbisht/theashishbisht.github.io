@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm off-white / ink palette — quiet, editorial */
+    --background:        40 33% 97%;   /* #FAF8F2 */
+    --foreground:        0 0% 9%;      /* #171717 */
+
+    --card:              40 33% 97%;
+    --card-foreground:   0 0% 9%;
+
+    --popover:           40 33% 97%;
+    --popover-foreground:0 0% 9%;
+
+    --primary:           220 55% 22%;  /* deep ink blue */
+    --primary-foreground:40 33% 97%;
+
+    --secondary:         40 20% 94%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted:             40 15% 92%;
+    --muted-foreground:  30 6% 40%;
+
+    --accent:            220 55% 22%;
+    --accent-foreground: 40 33% 97%;
+
+    --destructive:       0 60% 50%;
+    --destructive-foreground: 40 33% 97%;
+
+    --border:            36 14% 86%;
+    --input:             36 14% 86%;
+    --ring:              220 55% 22%;
+
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background:        24 8% 7%;     /* near black, slightly warm */
+    --foreground:        40 25% 92%;   /* warm cream */
+
+    --card:              24 8% 7%;
+    --card-foreground:   40 25% 92%;
+
+    --popover:           24 8% 9%;
+    --popover-foreground:40 25% 92%;
+
+    --primary:           40 25% 92%;
+    --primary-foreground:24 8% 7%;
+
+    --secondary:         24 6% 12%;
+    --secondary-foreground: 40 25% 92%;
+
+    --muted:             24 6% 12%;
+    --muted-foreground:  36 8% 60%;
+
+    --accent:            40 25% 92%;
+    --accent-foreground: 24 8% 7%;
+
+    --destructive:       0 55% 45%;
+    --destructive-foreground: 40 25% 92%;
+
+    --border:            24 6% 16%;
+    --input:             24 6% 16%;
+    --ring:              40 25% 92%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Editorial serif for display headings */
+  h1, h2, h3, .display {
+    font-family: 'Instrument Serif', ui-serif, Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Mono for technical labels & numbers */
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+}
+
+@layer components {
+  .section-padding { @apply py-24 md:py-36; }
+
+  .container-tight { @apply max-w-5xl mx-auto px-6 md:px-10; }
+
+  /* Tiny uppercase eyebrow text used above section titles */
+  .eyebrow {
+    @apply mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  /* Hair-thin divider, used between sections */
+  .hairline { @apply h-px w-full bg-border; }
+
+  /* Staggered fade-in on load */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fade-up 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+  }
+  .fade-up-1 { animation-delay: 0.05s; }
+  .fade-up-2 { animation-delay: 0.15s; }
+  .fade-up-3 { animation-delay: 0.25s; }
+  .fade-up-4 { animation-delay: 0.35s; }
+  .fade-up-5 { animation-delay: 0.45s; }
+}
+
+@keyframes fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
