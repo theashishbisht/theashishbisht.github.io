@@ -1,95 +1,112 @@
-# theashishbisht.github.io
+# 🌐 theashishbisht.github.io
 
-Personal portfolio — **Vite + React + TypeScript + Tailwind + shadcn/ui**, deployed to GitHub Pages.
-
----
-
-## ✏️ Editing content (read this first)
-
-**Every number, label, project, and link on the site lives in one file:**
-
-```
-src/data/profile.ts
-```
-
-Open it, change what you want, save. That's it. The page updates everywhere — hero, about, footer, contact.
-
-The counts (years of experience, projects, dashboards, etc.) are at the top of the file. The four hero stats are placeholders — replace with whatever is actually true for you.
+Welcome to my personal developer portfolio — a fully responsive and blazing-fast website built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. This project showcases my skills, projects, and background in a sleek, modern layout.
 
 ---
 
-## 🚀 Running it
+## 🚀 Tech Stack
 
-```bash
+- ⚡ **Vite** – Lightning-fast development and build tool
+- ⚛️ **React** – Component-based UI library
+- 🟦 **TypeScript** – Typed superset of JavaScript
+- 🎨 **Tailwind CSS** – Utility-first CSS framework
+- 💎 **shadcn/ui** – Accessible UI components
+
+---
+
+## 📁 Project Structure
+.
+├── public/ # Static assets
+├── src/ # Source code
+│ ├── components/ # Reusable components
+│ ├── pages/ # Page components
+│ └── index.tsx # App entry point
+├── index.html # Main HTML file
+├── vite.config.ts # Vite configuration
+├── tailwind.config.ts # Tailwind customization
+└── tsconfig.json # TypeScript configuration
+
+
+---
+
+## 📸 Preview
+
+Check out the live version of the portfolio:  
+👉 [https://theashishbisht.github.io](https://theashishbisht.github.io)
+
+---
+
+## 🛠️ Getting Started
+
+To run the project locally:
+
+# Clone the repository
+git clone https://github.com/theashishbisht/theashishbisht.github.io
+cd theashishbisht.github.io
+
+# Install dependencies
 npm install
-npm run dev          # local preview → http://localhost:8080
-npm run build        # production build into dist/
-npm run deploy       # publishes dist/ to the gh-pages branch
-```
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# 📦 Deployment
+This project is deployed on GitHub Pages using the output from vite build located in the dist/ directory.
+
+To deploy manually:
+
+npm run build
+cd dist
+git init
+git add .
+git commit -m "Deploy portfolio"
+git push -f origin gh-pages
+
+Then, configure GitHub Pages to serve from the gh-pages branch.
+
+🙋‍♂️ About Me
+Hi! I'm Ashish Bisht — a passionate developer focused on modern web technologies, cloud infrastructure, and scalable frontend architectures. This portfolio is a reflection of my work and personal branding.
+
+📬 Connect with me on LinkedIn
+📫 Email: theashishbisht@gmail.com
+
+📄 License
+This project is open-source and available under the MIT License.
 
 ---
 
-## 📊 Visitor counter (optional but recommended)
+Feel free to customize this further to match your personal branding or add more sections like testimonials, blog links, or project showcases. Let me know if you'd like assistance with any of these additions!
+::contentReference[oaicite:0]{index=0}
+ 
 
-The old `countapi.xyz` counter died. This site is wired for [GoatCounter](https://www.goatcounter.com/) — free, privacy-friendly, no tracking cookies.
 
-To turn it on:
 
-1. Sign up at https://www.goatcounter.com/ (30 seconds, no card required)
-2. Pick a code — e.g. `ashishbisht` — your dashboard will live at `https://ashishbisht.goatcounter.com`
-3. Open `src/data/profile.ts` and set:
-   ```ts
-   goatcounter: { code: "ashishbisht" },
-   ```
-4. Push. Counter appears in the footer.
 
-Leave `code` as `null` to keep it hidden.
 
----
 
-## 🧱 Stack
 
-- **Vite** (build)
-- **React 18** + **TypeScript**
-- **Tailwind CSS** with **shadcn/ui** primitives
-- **EmailJS** for the contact form
-- **GoatCounter** for visitor analytics
-- **React Router** (one route, but kept for future expansion)
 
-Fonts: Instrument Serif (display), Geist (body), JetBrains Mono (labels).
 
----
 
-## 📁 Layout
 
-```
-src/
-├── data/
-│   └── profile.ts              ← edit this for content updates
-├── components/
-│   ├── Hero.tsx
-│   ├── About.tsx
-│   ├── Skills.tsx
-│   ├── Portfolio.tsx
-│   ├── Contact.tsx
-│   ├── Navbar.tsx
-│   ├── Footer.tsx
-│   ├── ThemeToggle.tsx
-│   ├── VisitorCount.tsx        ← GoatCounter widget
-│   ├── common/                 ← Loading + Error boundary
-│   └── ui/                     ← shadcn primitives, don't touch
-├── layout/MainLayout.tsx
-├── pages/
-│   ├── Index.tsx
-│   └── NotFound.tsx
-├── index.css
-└── main.tsx
-```
 
----
 
-## 📬 Contact
 
-- Email: abisht129@gmail.com
-- LinkedIn: linkedin.com/in/theashishbisht
-- GitHub: github.com/theashishbisht
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
