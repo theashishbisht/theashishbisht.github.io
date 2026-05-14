@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -7,32 +6,32 @@
 
 @layer base {
   :root {
-    --background: 40 30% 98%;
+    --background: 40 35% 95%;
     --foreground: 222.2 84% 4.9%;
 
-    --card: 40 30% 98%;
+    --card: 40 38% 96%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 40 30% 98%;
+    --popover: 40 38% 96%;
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 40 20% 96%;
+    --secondary: 40 25% 92%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 40 20% 96%;
+    --muted: 40 25% 92%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 40 20% 96%;
+    --accent: 40 25% 92%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
     --ring: 221.2 83.2% 53.3%;
 
     --radius: 0.5rem;
@@ -97,7 +96,7 @@
 }
 
 .pattern-bg {
-  background-color: hsl(40 30% 98%);
+  background-color: hsl(40 35% 95%);
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234e67e5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
