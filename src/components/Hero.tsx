@@ -31,7 +31,6 @@ const Hero = () => {
         </div>
       );
     }
-    // disabled (no code set yet) or error → show a friendly fallback
     return (
       <div className="font-semibold text-brand-blue dark:text-white">
         Welcome!
@@ -62,9 +61,10 @@ const Hero = () => {
                 {CURRENT_ROLE.title} at {CURRENT_ROLE.company}
               </h2>
               <p className="text-muted-foreground md:text-lg max-w-[600px]">
-                Over {YEARS_OF_EXPERIENCE} years of experience transforming complex data into
-                actionable business insights — now driving Data Quality, Governance, and SAP FICO
-                master-data initiatives for clients.
+                Data analyst with {YEARS_OF_EXPERIENCE}+ years of experience turning messy,
+                large-scale data into the answers leadership actually acts on. Currently leading
+                Data Quality and Governance work on SAP, with a focus on Master Data, Pricing,
+                and FICO for client engagements.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-4 flex-wrap">
@@ -118,11 +118,9 @@ const Hero = () => {
 
             <div className="md:w-1/2 flex justify-center md:justify-end animate-fade-in">
               <div className="relative">
-                {/* Decorative background elements */}
                 <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-brand-blue rounded-full blur-3xl opacity-20 animate-pulse"></div>
                 <div className="absolute -z-10 -bottom-4 -left-4 w-60 h-60 bg-brand-orange rounded-full blur-3xl opacity-20"></div>
 
-                {/* Profile image container */}
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-br from-brand-blue to-brand-orange shadow-xl relative">
                   <div className="w-full h-full rounded-full bg-background overflow-hidden">
                     <img
@@ -140,7 +138,6 @@ const Hero = () => {
                   <span className="absolute w-4 h-4 bg-brand-orange rounded-full top-1/2 -left-1 transform -translate-y-1/2"></span>
                 </div>
 
-                {/* Floating skill badges */}
                 <div className="absolute -top-3 -right-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md text-sm font-bold border border-brand-lightblue/50 flex items-center gap-2 dark:border-brand-blue/30">
                   <Database className="h-4 w-4 text-brand-blue" />
                   <span className="text-brand-darkblue dark:text-white">SAP FICO</span>
