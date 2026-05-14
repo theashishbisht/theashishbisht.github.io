@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,117 +7,101 @@
 
 @layer base {
   :root {
-    /* Warm off-white / ink palette — quiet, editorial */
-    --background:        40 33% 97%;   /* #FAF8F2 */
-    --foreground:        0 0% 9%;      /* #171717 */
+    --background: 40 30% 98%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card:              40 33% 97%;
-    --card-foreground:   0 0% 9%;
+    --card: 40 30% 98%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover:           40 33% 97%;
-    --popover-foreground:0 0% 9%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary:           220 55% 22%;  /* deep ink blue */
-    --primary-foreground:40 33% 97%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary:         40 20% 94%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 40 20% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted:             40 15% 92%;
-    --muted-foreground:  30 6% 40%;
+    --muted: 40 20% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent:            220 55% 22%;
-    --accent-foreground: 40 33% 97%;
+    --accent: 40 20% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive:       0 60% 50%;
-    --destructive-foreground: 40 33% 97%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border:            36 14% 86%;
-    --input:             36 14% 86%;
-    --ring:              220 55% 22%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background:        24 8% 7%;     /* near black, slightly warm */
-    --foreground:        40 25% 92%;   /* warm cream */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card:              24 8% 7%;
-    --card-foreground:   40 25% 92%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover:           24 8% 9%;
-    --popover-foreground:40 25% 92%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary:           40 25% 92%;
-    --primary-foreground:24 8% 7%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary:         24 6% 12%;
-    --secondary-foreground: 40 25% 92%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted:             24 6% 12%;
-    --muted-foreground:  36 8% 60%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent:            40 25% 92%;
-    --accent-foreground: 24 8% 7%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive:       0 55% 45%;
-    --destructive-foreground: 40 25% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border:            24 6% 16%;
-    --input:             24 6% 16%;
-    --ring:              40 25% 92%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
   }
 }
 
 @layer base {
-  * { @apply border-border; }
-
-  html { scroll-behavior: smooth; }
-
+  * {
+    @apply border-border;
+  }
+  
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
   }
 
-  /* Editorial serif for display headings */
-  h1, h2, h3, .display {
-    font-family: 'Instrument Serif', ui-serif, Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.01em;
+  .section-padding {
+    @apply py-16 md:py-24;
   }
 
-  /* Mono for technical labels & numbers */
-  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-darkblue;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
 }
 
-@layer components {
-  .section-padding { @apply py-24 md:py-36; }
-
-  .container-tight { @apply max-w-5xl mx-auto px-6 md:px-10; }
-
-  /* Tiny uppercase eyebrow text used above section titles */
-  .eyebrow {
-    @apply mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground;
-  }
-
-  /* Hair-thin divider, used between sections */
-  .hairline { @apply h-px w-full bg-border; }
-
-  /* Staggered fade-in on load */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(8px);
-    animation: fade-up 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-  }
-  .fade-up-1 { animation-delay: 0.05s; }
-  .fade-up-2 { animation-delay: 0.15s; }
-  .fade-up-3 { animation-delay: 0.25s; }
-  .fade-up-4 { animation-delay: 0.35s; }
-  .fade-up-5 { animation-delay: 0.45s; }
+.pattern-bg {
+  background-color: hsl(40 30% 98%);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234e67e5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-@keyframes fade-up {
-  to { opacity: 1; transform: translateY(0); }
+.dark .pattern-bg {
+  background-color: #121212;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234e67e5' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
