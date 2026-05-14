@@ -12,7 +12,7 @@ export const YEARS_OF_EXPERIENCE = 5.5;
 // 2. Pick a code (e.g. "ashishbisht"). Your dashboard will be at https://ashishbisht.goatcounter.com
 // 3. Replace null below with your code in quotes, like "ashishbisht"
 // Until set, the counter shows a friendly fallback.
-export const GOATCOUNTER_CODE: string | null = null;
+export const GOATCOUNTER_CODE: string | null = "ashishbisht";
 
 export const CURRENT_ROLE = {
   title: 'Senior Data Analyst',
