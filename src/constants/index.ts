@@ -8,11 +8,11 @@ export const CONTAINER_PADDING = 'px-4 md:px-6';
 export const YEARS_OF_EXPERIENCE = 5.5;
 
 // GoatCounter setup:
-// 1. Sign up at https://www.goatcounter.com/ (free, 30 seconds, no card)
-// 2. Pick a code (e.g. "ashishbisht") — your dashboard will be at https://ashishbisht.goatcounter.com
-// 3. Replace null below with your code in quotes, e.g. "ashishbisht"
+// 1. Sign up at https://www.goatcounter.com/ (free, takes 30 seconds, no card required)
+// 2. Pick a code (e.g. "ashishbisht"). Your dashboard will be at https://ashishbisht.goatcounter.com
+// 3. Replace null below with your code in quotes, like "ashishbisht"
 // Until set, the counter shows a friendly fallback.
-export const GOATCOUNTER_CODE: string | null = "ashishbisht";
+export const GOATCOUNTER_CODE: string | null = null;
 
 export const CURRENT_ROLE = {
   title: 'Senior Data Analyst',
@@ -23,29 +23,29 @@ export const EXPERIENCE = [
   {
     role: 'Senior Data Analyst',
     company: 'Naabhik Solutions LLP',
-    period: 'December 2025 – Present',
+    period: 'December 2025 to Present',
     current: true,
     summary:
-      'Working on SAP technologies with a focus on Data Quality and Governance. ' +
-      'Part of the Master Data, Pricing, and Finance team — supporting client engagements ' +
-      'on SAP FICO (Finance & Controlling) for master data alignment, pricing structures, ' +
-      'and finance-data governance.',
+      'Leading Data Quality and Governance work on SAP technologies. ' +
+      'Part of the Master Data, Pricing, and Finance team, supporting client engagements ' +
+      'on SAP FICO (Finance and Controlling) for master data alignment, pricing structures, ' +
+      'and finance data governance.',
     highlights: [
       'SAP Master Data Management',
       'Data Quality & Governance',
       'Pricing master data',
       'Finance master data',
-      'SAP FICO (Finance & Controlling) for clients',
+      'SAP FICO for clients',
     ],
   },
   {
     role: 'Senior QC Data Analyst',
     company: 'Numerator',
-    period: '2020 – 2025',
+    period: '2020 to 2025',
     current: false,
     summary:
-      'Led quality control on large-scale consumer panel data. Built and automated ' +
-      'data pipelines on Azure Data Factory + PySpark and developed Power BI dashboards ' +
+      'Ran quality control on large-scale consumer panel data. Built and automated ' +
+      'data pipelines on Azure Data Factory and PySpark, and developed Power BI dashboards ' +
       'that surfaced real-time consumer behavior signals for leadership.',
     highlights: [
       'Azure Data Factory pipelines',
