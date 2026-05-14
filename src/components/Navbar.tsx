@@ -1,74 +1,66 @@
-import { useEffect, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
-import { Menu, X } from "lucide-react";
-import { PROFILE } from "@/data/profile";
 
-const NAV = [
-  { name: "About",     href: "#about" },
-  { name: "Toolkit",   href: "#skills" },
-  { name: "Work",      href: "#portfolio" },
-  { name: "Contact",   href: "#contact" },
-];
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
+import { Menu } from 'lucide-react';
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navItems = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container-tight flex h-16 items-center justify-between">
-        <a href="#home" className="font-serif text-xl tracking-tight">
-          {PROFILE.name.split(" ")[0]}{" "}
-          <span className="italic text-muted-foreground">{PROFILE.name.split(" ")[1]}</span>
-        </a>
-
-        <nav className="hidden md:flex items-center gap-8">
-          {NAV.map((item) => (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-2">
+          <Link to="/" className="text-xl font-bold text-brand-blue">Ashish Bisht</Link>
+        </div>
+        
+        <nav className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="mono text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium transition-colors hover:text-brand-blue"
             >
               {item.name}
             </a>
           ))}
           <ThemeToggle />
         </nav>
-
-        <div className="flex items-center gap-2 md:hidden">
+        
+        <div className="flex items-center md:hidden">
           <ThemeToggle />
           <button
-            onClick={() => setOpen((v) => !v)}
-            className="p-2 text-muted-foreground hover:text-foreground"
+            onClick={toggleMenu}
+            className="ml-2 p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Menu className="h-5 w-5" />
           </button>
         </div>
       </div>
-
-      {open && (
-        <div className="md:hidden border-t border-border bg-background">
-          <div className="container-tight flex flex-col py-4 gap-1">
-            {NAV.map((item) => (
+      
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <div className="flex flex-col space-y-3 p-4 bg-background border-t">
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                onClick={() => setOpen(false)}
-                className="mono text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-foreground py-2"
+                className="px-2 py-1 text-sm font-medium transition-colors hover:text-brand-blue"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>

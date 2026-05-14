@@ -1,31 +1,47 @@
-import { PROFILE } from "@/data/profile";
-import VisitorCount from "./VisitorCount";
+
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="border-t border-border py-12">
-      <div className="container-tight flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <div className="font-serif text-xl">{PROFILE.name}</div>
-          <div className="mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground mt-1">
-            {PROFILE.role} · {PROFILE.company}
+    <footer className="bg-secondary/70 dark:bg-secondary/30 py-8">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex space-x-4 mb-6">
+            <a 
+              href="https://github.com/theashishbisht" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-background hover:bg-brand-blue hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/theashishbisht" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-background hover:bg-brand-blue hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a 
+              href="mailto:abisht129@gmail.com"
+              className="p-2 rounded-full bg-background hover:bg-brand-blue hover:text-white transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
           </div>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mono text-xs text-muted-foreground">
-          <a href={`mailto:${PROFILE.contact.email}`} className="hover:text-foreground transition-colors">
-            Email
-          </a>
-          <a href={PROFILE.contact.linkedin.url} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-            LinkedIn
-          </a>
-          <a href={PROFILE.contact.github.url} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-            GitHub
-          </a>
-          <span>·</span>
-          <span>© {year}</span>
-          <VisitorCount />
+          
+          <p className="text-center text-sm text-muted-foreground mb-2">
+            &copy; {currentYear} Ashish Bisht. All rights reserved.
+          </p>
+          <p className="text-center text-xs text-muted-foreground">
+            Senior Data Analyst | SQL | Python | Azure | Power BI
+          </p>
         </div>
       </div>
     </footer>
