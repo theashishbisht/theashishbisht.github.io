@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Database, Code, Server, Binoculars, Play } from 'lucide-react';
 import { useVisitorCount } from '@/hooks/useVisitorCount';
@@ -16,25 +16,47 @@ const NAVIGATION = {
   ABOUT: '#about',
 };
 
+// Session storage key so we only auto-play once per tab session.
+// Refreshing the same tab will NOT replay. Closing and reopening the site WILL.
+const INTRO_SHOWN_KEY = 'intro_shown_this_session';
+
 const Hero = () => {
   const [introOpen, setIntroOpen] = useState(false);
   const { count, status } = useVisitorCount();
 
-  const renderViewCounter = () => {
+  // Auto-play intro on first load of the session
+  useEffect(() => {
+    try {
+      const alreadyShown = sessionStorage.getItem(INTRO_SHOWN_KEY);
+      if (!alreadyShown) {
+        // Small delay so the page paints first, then the intro takes over
+        const t = setTimeout(() => {
+          setIntroOpen(true);
+          sessionStorage.setItem(INTRO_SHOWN_KEY, 'true');
+        }, 600);
+        return () => clearTimeout(t);
+      }
+    } catch {
+      // sessionStorage unavailable (rare). Skip auto-play, no-op.
+    }
+  }, []);
+
+  // Visitor count display, shown next to the binoculars
+  const renderCountInline = () => {
     if (status === 'loading') {
-      return <div className="animate-pulse text-sm text-muted-foreground">Loading...</div>;
+      return <span className="text-sm text-muted-foreground animate-pulse">…</span>;
     }
     if (status === 'ready' && count !== null) {
       return (
-        <div className="font-semibold text-brand-blue dark:text-white">
+        <span className="font-bold text-lg text-brand-blue dark:text-white tabular-nums">
           {count.toLocaleString()}
-        </div>
+        </span>
       );
     }
     return (
-      <div className="font-semibold text-brand-blue dark:text-white">
+      <span className="font-semibold text-base text-brand-blue dark:text-white">
         Welcome!
-      </div>
+      </span>
     );
   };
 
@@ -93,22 +115,19 @@ const Hero = () => {
                 </Button>
               </div>
 
-              {/* Page Views Badge */}
+              {/* Visitor count badge — number sits right next to the binoculars */}
               <div className="relative mt-6 animate-fade-in w-full max-w-[300px]">
                 <div className="rounded-xl p-0.5 bg-gradient-to-r from-brand-blue via-brand-orange to-brand-blue shadow-lg">
-                  <div className="rounded-xl bg-background/80 dark:bg-background/40 backdrop-blur-md p-3 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="bg-gradient-to-br from-brand-blue to-brand-orange p-1.5 rounded-lg shadow-inner">
-                        <Binoculars className="h-5 w-5 text-white animate-pulse" />
-                      </div>
+                  <div className="rounded-xl bg-background/80 dark:bg-background/40 backdrop-blur-md p-3 flex items-center gap-3">
+                    {/* Binoculars + count grouped together */}
+                    <div className="bg-gradient-to-br from-brand-blue to-brand-orange p-1.5 rounded-lg shadow-inner shrink-0">
+                      <Binoculars className="h-5 w-5 text-white animate-pulse" />
                     </div>
-                    <div className="flex items-center">
-                      <div className="text-right">
-                        {renderViewCounter()}
-                        <div className="text-xs text-muted-foreground">
-                          {status === 'ready' ? 'visitors exploring' : 'thanks for stopping by'}
-                        </div>
-                      </div>
+                    <div className="flex items-baseline gap-2 min-w-0">
+                      {renderCountInline()}
+                      <span className="text-xs text-muted-foreground truncate">
+                        {status === 'ready' ? 'visitors' : 'thanks for stopping by'}
+                      </span>
                     </div>
                   </div>
                   <div className="absolute inset-0 rounded-xl bg-brand-blue/15 dark:bg-brand-orange/15 blur-md -z-10"></div>
