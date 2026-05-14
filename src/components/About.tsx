@@ -18,16 +18,17 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="text-xl font-semibold mb-4">Professional Journey</h3>
               <p className="text-muted-foreground mb-4">
-                With over {YEARS_OF_EXPERIENCE} years in data analytics, I've developed a passion
-                for transforming raw data into meaningful insights that drive business decisions.
-                I currently work at <span className="font-medium text-foreground">Naabhik Solutions LLP</span> as
-                a Senior Data Analyst, focusing on SAP technologies, Data Quality &amp; Governance,
-                and SAP FICO master-data engagements for clients.
+                I've spent the last {YEARS_OF_EXPERIENCE}+ years in data analytics, building systems
+                that take noisy, raw data and turn it into something a business can rely on.
+                Today I'm a Senior Data Analyst at <span className="font-medium text-foreground">Naabhik Solutions LLP</span>,
+                where I lead Data Quality and Governance work on SAP and support client engagements
+                across Master Data, Pricing, and FICO.
               </p>
               <p className="text-muted-foreground">
-                Previously, I spent four-plus years at <span className="font-medium text-foreground">Numerator</span> as
-                a Senior QC Data Analyst, building scalable data pipelines on Azure and PySpark
-                and shipping Power BI dashboards for leadership.
+                Before that, I spent over four years at <span className="font-medium text-foreground">Numerator</span> as a
+                Senior QC Data Analyst. I built and automated data pipelines on Azure and PySpark,
+                ran quality control on large consumer panel datasets, and shipped Power BI dashboards
+                that leadership used to make day-to-day decisions.
               </p>
             </CardContent>
           </Card>
@@ -53,15 +54,17 @@ const About = () => {
             <CardContent className="pt-6">
               <h3 className="text-xl font-semibold mb-4">My Approach to Data</h3>
               <p className="text-muted-foreground mb-4">
-                I believe data is more than just numbers — it's a story waiting to be told. My work focuses on:
+                Good data work isn't about producing more reports. It's about asking the right
+                questions and making sure the numbers behind the answer can actually be trusted.
+                That's where I focus my time:
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li>Transforming complex datasets into clear, actionable insights</li>
-                <li>Establishing data quality and governance standards that hold at scale</li>
+                <li>Setting data quality and governance standards that hold at scale</li>
                 <li>Aligning master data across pricing, finance (FICO), and operations</li>
-                <li>Building robust pipelines that ensure data reliability across systems</li>
-                <li>Creating intuitive visualizations that communicate findings effectively</li>
-                <li>Continuously optimizing processes for greater efficiency and accuracy</li>
+                <li>Building pipelines that stay reliable as systems and teams grow</li>
+                <li>Creating visualizations that communicate findings without the noise</li>
+                <li>Continuously refining processes for greater efficiency and accuracy</li>
               </ul>
             </CardContent>
           </Card>
